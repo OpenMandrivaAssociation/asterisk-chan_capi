@@ -2,8 +2,8 @@
 
 Summary:	Asterisk ISDN CAPI channel driver
 Name:		asterisk-%{rname}
-Version:	1.1.2
-Release:	%mkrel 2
+Version:	1.1.4
+Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.melware.org/ChanCapi
@@ -36,16 +36,17 @@ chmod 644 CHANGES INSTALL README
 
 %build
 
-make CFLAGS="%{optflags} -pipe -Wall -fPIC -DPIC -D_REENTRANT -D_GNU_SOURCE -DASTERISKVERSION=\\\"1.6\\\" -I. -I%{_includedir}" USE_OWN_LIBCAPI=no
+#make CFLAGS="%{optflags} -pipe -Wall -fPIC -DPIC -D_REENTRANT -D_GNU_SOURCE -DASTERISKVERSION=\\\"1.6\\\" -I. -I%{_includedir}" USE_OWN_LIBCAPI=no
+%make
 
 %install
 rm -rf %{buildroot}
 
-install -d %{buildroot}%{_sysconfdir}/asterisk
-install -d %{buildroot}%{_libdir}/asterisk
+install -d %{buildroot}%{_sysconfdir}/asterisk/modules
+install -d %{buildroot}%{_libdir}/asterisk/modules
 
 install -m0644 capi.conf %{buildroot}%{_sysconfdir}/asterisk/
-install -m0755 chan_capi.so %{buildroot}%{_libdir}/asterisk/
+install -m0755 chan_capi.so %{buildroot}%{_libdir}/asterisk/modules/
 
 %clean
 rm -rf %{buildroot}
@@ -54,5 +55,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc CHANGES INSTALL README
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/asterisk/capi.conf
-%attr(0755,root,root) %{_libdir}/asterisk/chan_capi.so
+%attr(0755,root,root) %{_libdir}/asterisk/modules/chan_capi.so
 
