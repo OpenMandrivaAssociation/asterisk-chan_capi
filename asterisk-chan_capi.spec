@@ -2,13 +2,12 @@
 
 Summary:	Asterisk ISDN CAPI channel driver
 Name:		asterisk-%{rname}
-Version:	1.1.4
+Version:	1.1.5
 Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.melware.org/ChanCapi
 Source0:	ftp://ftp.chan-capi.org/chan-capi/%{rname}-%{version}.tar.gz
-Patch0:		chan_capi-1.1.2-format_not_a_string_literal_and_no_format_arguments.diff
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	asterisk-devel
 Requires:	asterisk
@@ -24,7 +23,6 @@ Junghanns.NET GmbH Klaus-Peter Junghanns.
 %prep
 
 %setup -q -n %{rname}-%{version}
-%patch0 -p0
 
 # clean up CVS stuff
 for i in `find . -type d -name CVS` `find . -type f -name .cvs\*` `find . -type f -name .#\*`; do
