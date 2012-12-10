@@ -2,8 +2,8 @@
 
 Summary:	Asterisk ISDN CAPI channel driver
 Name:		asterisk-%{rname}
-Version:	1.1.5
-Release:	%mkrel 2
+Version:	1.1.6
+Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.melware.org/ChanCapi
@@ -13,7 +13,6 @@ BuildRequires:	asterisk-devel
 Requires:	asterisk
 Provides:	asterisk-chan_capi-cm = %{version}-%{release}
 Obsoletes:	asterisk-chan_capi-cm
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 ISDN CAPI Channel driver (chan_capi) for the Asterisk Open Source VOIP
@@ -38,20 +37,13 @@ chmod 644 CHANGES INSTALL README
 %make
 
 %install
-rm -rf %{buildroot}
-
 install -d %{buildroot}%{_sysconfdir}/asterisk/modules
 install -d %{buildroot}%{_libdir}/asterisk/modules
 
 install -m0644 capi.conf %{buildroot}%{_sysconfdir}/asterisk/
 install -m0755 chan_capi.so %{buildroot}%{_libdir}/asterisk/modules/
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc CHANGES INSTALL README
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/asterisk/capi.conf
 %attr(0755,root,root) %{_libdir}/asterisk/modules/chan_capi.so
-
