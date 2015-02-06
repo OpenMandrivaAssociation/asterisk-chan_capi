@@ -3,7 +3,7 @@
 Summary:	Asterisk ISDN CAPI channel driver
 Name:		asterisk-%{rname}
 Version:	1.1.6
-Release:	%mkrel 1
+Release:	2
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.melware.org/ChanCapi
