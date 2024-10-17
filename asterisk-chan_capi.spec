@@ -6,7 +6,7 @@ Version:	1.1.6
 Release:	2
 License:	GPLv2
 Group:		System/Servers
-URL:		http://www.melware.org/ChanCapi
+URL:		https://www.melware.org/ChanCapi
 Source0:	ftp://ftp.chan-capi.org/chan-capi/%{rname}-%{version}.tar.gz
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	asterisk-devel
